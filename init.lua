@@ -12,6 +12,9 @@ local use = require("packer").use
 require("packer").startup(function()
     use "wbthomason/packer.nvim" -- packer.nvim 插件管理器
     use "jiangmiao/auto-pairs" -- 括号自动补全
+    use "github/copilot.vim" -- github ai 结对编程助手
+    use "mhinz/vim-startify" -- 启动页
+    use "fatih/vim-go" -- vim-go
     use "tpope/vim-fugitive" -- 在vim中使用git
     use "preservim/tagbar" -- 大纲式导航
     use "joshdick/onedark.vim" -- onedark 主题
@@ -21,10 +24,13 @@ require("packer").startup(function()
     use {"neovim/nvim-lspconfig", "williamboman/nvim-lsp-installer"} -- lsp
     use {"kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons"} -- 文件管理器
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"} -- 语法高亮
-    use {"folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons"} -- 代码诊断
     use { -- telescope 模糊搜索
         "nvim-telescope/telescope.nvim",
         requires = {{"nvim-lua/plenary.nvim"}}
+    }
+    use { -- 让 lsp 更好用
+        'ray-x/navigator.lua',
+        requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}
     }
     -- 以下都是代码补全
     use {
@@ -133,6 +139,7 @@ keymap("n", "<A-t>", ":TagbarToggle<CR>", opt)
 -- 切换标签页
 keymap("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
 keymap("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
+
 -- 状态栏的设置
 vim.g.lightline = {
     colorscheme = "onedark",
@@ -185,48 +192,18 @@ require("nvim-treesitter.configs").setup {
             scope_incremental = "<TAB>",
             node_decremental = "<BS>"
         }
-    },
-    -- 启用基于 treesitter 的代码格式化
-    indent = {enable = true},
-    textobjects = {
-        select = {
-            enable = true,
-            lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-            keymaps = {
-                -- You can use the capture groups defined in textobjects.scm
-                ["af"] = "@function.outer",
-                ["if"] = "@function.inner",
-                ["ac"] = "@class.outer",
-                ["ic"] = "@class.inner"
-            }
-        },
-        move = {
-            enable = true,
-            set_jumps = true, -- whether to set jumps in the jumplist
-            goto_next_start = {
-                ["]m"] = "@function.outer",
-                ["]]"] = "@class.outer"
-            },
-            goto_next_end = {
-                ["]M"] = "@function.outer",
-                ["]["] = "@class.outer"
-            },
-            goto_previous_start = {
-                ["[m"] = "@function.outer",
-                ["[["] = "@class.outer"
-            },
-            goto_previous_end = {
-                ["[M"] = "@function.outer",
-                ["[]"] = "@class.outer"
-            }
-        }
     }
 }
+
 -- nvim-tree 文件管理器设置
 require("nvim-tree").setup {
     -- 关闭文件时自动关闭
     auto_close = true
 }
+
+-- navigator 的设置
+require("navigator").setup()
+
 -- bufferline 标题栏设置
 require("bufferline").setup {
     options = {
@@ -243,48 +220,6 @@ require("bufferline").setup {
         }
     }
 }
--- lsp 设置
-local lspConfig = require "lspconfig"
-local bufmap = vim.api.nvim_buf_set_keymap
--- lsp 快捷键设置
-local onAttach = function(_, bufnr)
-    bufmap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
-    bufmap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
-    bufmap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
-    bufmap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
-    bufmap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opt)
-    bufmap(bufnr, "n", "<leader>wa",
-           "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opt)
-    bufmap(bufnr, "n", "<leader>wr",
-           "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opt)
-    bufmap(bufnr, "n", "<leader>wl",
-           "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
-           opt)
-    bufmap(bufnr, "n", "<leader>D",
-           "<cmd>lua vim.lsp.buf.type_definition()<CR>", opt)
-    bufmap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
-    bufmap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opt)
-    bufmap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>",
-           opt)
-    bufmap(bufnr, "n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>",
-           opt)
-    bufmap(bufnr, "n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
-    bufmap(bufnr, "n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opt)
-    bufmap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>",
-           opt)
-    bufmap(bufnr, "n", "<leader>so",
-           [[<cmd>lua require("telescope.builtin").lsp_document_symbols()<CR>]],
-           opt)
-    bufmap(bufnr, "n", "<space>f",
-           ":w<CR><cmd>lua vim.lsp.buf.formatting()<CR>", opt)
-end
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
--- lsp 语言服务器
-local servers = {"gopls", "clangd", "rust_analyzer", "pyright", "tsserver"}
-for _, lsp in ipairs(servers) do
-    lspConfig[lsp].setup {on_attach = onAttach, capabilities = capabilities}
-end
 
 -- 代码补全设置
 local cmp = require "cmp"
