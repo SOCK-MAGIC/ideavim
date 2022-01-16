@@ -277,6 +277,7 @@ local onAttach = function(_, bufnr)
 end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+-- lsp 语言服务器
 local servers = {"gopls", "clangd", "rust_analyzer", "pyright", "tsserver"}
 for _, lsp in ipairs(servers) do
     lspConfig[lsp].setup {on_attach = onAttach, capabilities = capabilities}
