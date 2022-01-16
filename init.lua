@@ -20,6 +20,7 @@ require("packer").startup(function()
     use {"neovim/nvim-lspconfig", "williamboman/nvim-lsp-installer"} -- lsp
     use {"kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons"} -- 文件管理器
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"} -- 语法高亮
+    use {"folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons"} -- 代码诊断
     use { -- telescope 模糊搜索
         "nvim-telescope/telescope.nvim",
         requires = {{"nvim-lua/plenary.nvim"}}
@@ -53,6 +54,8 @@ vim.o.fileencoding = "UTF-8"
 -- 上下移动光标时上下方保留4行
 vim.o.scrolloff = 4
 vim.o.sidescrolloff = 4
+-- 使用gui时的字体
+vim.opt.guifont = "FiraCode NF:h8"
 -- 使用相对行号
 vim.wo.number = true
 vim.wo.relativenumber = true
