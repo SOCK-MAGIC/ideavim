@@ -166,7 +166,7 @@ require("nvim-treesitter.configs").setup {
         "html", "css", "vim", "lua", "javascript", "typescript", "c", "go",
         "rust", "cpp", "cmake", "dockerfile", "fish", "gomod", "java", "json",
         "json5", "jsonc", "julia", "kotlin", "markdown", "python", "regex",
-        "swift", "vue", "yaml"
+        "vue", "yaml"
     },
     -- 启用代码高亮
     highlight = {enable = true, additional_vim_regex_highlighting = false},
@@ -269,7 +269,8 @@ local onAttach = function(_, bufnr)
     bufmap(bufnr, "n", "<leader>so",
            [[<cmd>lua require("telescope.builtin").lsp_document_symbols()<CR>]],
            opt)
-    bufmap(bufnr, "n", "<space>f", ":w<CR><cmd>lua vim.lsp.buf.formatting()<CR>", opt)
+    bufmap(bufnr, "n", "<space>f",
+           ":w<CR><cmd>lua vim.lsp.buf.formatting()<CR>", opt)
 end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
