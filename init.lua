@@ -102,6 +102,10 @@ local opt = {noremap = true, silent = true}
 keymap("", "<Space>", "Nop", opt) -- 先让空格什么都不干
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+-- fw 保存
+keymap("n", "fw", ":w<CR>", opt)
+-- fc 退出
+keymap("n", "fc", ":q<CR>", opt)
 -- 分屏
 keymap("n", "sv", ":vsp<CR>", opt) -- 水平分屏
 keymap("n", "sh", ":sp<CR>", opt) -- 垂直分屏
@@ -119,7 +123,7 @@ keymap("n", "<A-j>", "<C-w>j", opt)
 keymap("n", "<A-k>", "<C-w>k", opt)
 keymap("n", "<A-l>", "<C-w>l", opt)
 -- 打开 nvim-tree 文件管理器
-keymap("n", "<A-m>", ":NvimTreeToggle<CR>", opt)
+keymap("n", "<A-e>", ":NvimTreeToggle<CR>", opt)
 -- 切换标签页
 keymap("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
 keymap("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
@@ -265,8 +269,7 @@ local onAttach = function(_, bufnr)
     bufmap(bufnr, "n", "<leader>so",
            [[<cmd>lua require("telescope.builtin").lsp_document_symbols()<CR>]],
            opt)
-    vim.cmd [[ command! Format execute "lua vim.lsp.buf.formatting()" ]]
-
+    bufmap(bufnr, "n", "<space>f", ":w<CR><cmd>lua vim.lsp.buf.formatting()<CR>", opt)
 end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
