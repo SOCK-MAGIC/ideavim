@@ -13,6 +13,7 @@ require("packer").startup(function()
     use "wbthomason/packer.nvim" -- packer.nvim 插件管理器
     use "jiangmiao/auto-pairs" -- 括号自动补全
     use "tpope/vim-fugitive" -- 在vim中使用git
+    use "preservim/tagbar" -- 大纲式导航
     use "joshdick/onedark.vim" -- onedark 主题
     use "skywind3000/vim-terminal-help" -- 方便的使用内置终端
     use "itchyny/lightline.vim" -- 让状态栏更好看
@@ -127,6 +128,8 @@ keymap("n", "<A-k>", "<C-w>k", opt)
 keymap("n", "<A-l>", "<C-w>l", opt)
 -- 打开 nvim-tree 文件管理器
 keymap("n", "<A-e>", ":NvimTreeToggle<CR>", opt)
+-- 打开tagbar
+keymap("n", "<A-t>", ":TagbarToggle<CR>", opt)
 -- 切换标签页
 keymap("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
 keymap("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
