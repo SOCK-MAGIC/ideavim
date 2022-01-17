@@ -15,6 +15,7 @@ require("packer").startup(function()
     use "github/copilot.vim" -- github ai 结对编程助手
     use "mhinz/vim-startify" -- 启动页
     use "fatih/vim-go" -- vim-go
+    use "kdheepak/lazygit.nvim"
     use "tpope/vim-fugitive" -- 在vim中使用git
     use "preservim/tagbar" -- 大纲式导航
     use "joshdick/onedark.vim" -- onedark 主题
@@ -116,6 +117,8 @@ vim.g.maplocalleader = " "
 keymap("n", "fw", ":w<CR>", opt)
 -- fc 退出
 keymap("n", "fc", ":q<CR>", opt)
+-- 调用 lazygit
+keymap("n", "<leader>gg", ":LazyGit<CR>", opt)
 -- 分屏
 keymap("n", "sv", ":vsp<CR>", opt) -- 水平分屏
 keymap("n", "sh", ":sp<CR>", opt) -- 垂直分屏
