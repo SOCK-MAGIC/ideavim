@@ -199,10 +199,7 @@ require("nvim-treesitter.configs").setup {
 }
 
 -- nvim-tree 文件管理器设置
-require("nvim-tree").setup {
-    -- 关闭文件时自动关闭
-    auto_close = true
-}
+require("nvim-tree").setup {}
 
 -- navigator 的设置
 require("navigator").setup()
