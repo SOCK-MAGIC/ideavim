@@ -29,7 +29,7 @@ require("packer").startup(function()
         "nvim-telescope/telescope.nvim",
         requires = {{"nvim-lua/plenary.nvim"}}
     }
-    use { -- 让 lsp 更好用
+    use { -- 不用设置，就让 lsp 更好用
         'ray-x/navigator.lua',
         requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}
     }
@@ -117,6 +117,8 @@ vim.g.maplocalleader = " "
 keymap("n", "fw", ":w<CR>", opt)
 -- fc 退出
 keymap("n", "fc", ":q<CR>", opt)
+-- 去掉上次搜索时的高亮
+keymap("n", "<leader>/", ":nohls<CR>", opt)
 -- 调用 lazygit
 keymap("n", "<leader>gg", ":LazyGit<CR>", opt)
 -- 分屏
