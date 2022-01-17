@@ -15,7 +15,8 @@ require("packer").startup(function()
     use "github/copilot.vim" -- github ai 结对编程助手
     use "mhinz/vim-startify" -- 启动页
     use "fatih/vim-go" -- vim-go
-    use "kdheepak/lazygit.nvim"
+    use "kdheepak/lazygit.nvim" -- lazygit
+    use "preservim/nerdcommenter" -- 快速注释
     use "tpope/vim-fugitive" -- 在vim中使用git
     use "preservim/tagbar" -- 大纲式导航
     use "joshdick/onedark.vim" -- onedark 主题
@@ -271,3 +272,6 @@ cmp.setup {
         end
     }
 }
+
+-- 快速注释的设置
+vim.g.NERDSpaceDelims = 1 -- 加一个空格
