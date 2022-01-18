@@ -42,8 +42,7 @@ require("packer").startup(function()
             "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer", "hrsh7th/cmp-path",
             "hrsh7th/cmp-cmdline", "hrsh7th/cmp-vsnip", "hrsh7th/vim-vsnip",
             "rafamadriz/friendly-snippets", "onsails/lspkind-nvim",
-            "hrsh7th/cmp-nvim-lua", "hrsh7th/cmp-calc", "f3fora/cmp-spell",
-            "hrsh7th/cmp-emoji"
+            "hrsh7th/cmp-nvim-lua", "hrsh7th/cmp-calc", "hrsh7th/cmp-emoji"
         }
     }
 end)
@@ -109,9 +108,6 @@ vim.o.mouse = "a"
 vim.o.backup = false
 vim.o.writebackup = false
 vim.o.swapfile = false
--- spell 设置
-vim.opt.spell = true
-vim.opt.spelllang = {"en_us"}
 -- 使用空格键作为 leader key
 local keymap = vim.api.nvim_set_keymap
 local opt = {noremap = true, silent = true}
@@ -187,7 +183,7 @@ require("nvim-treesitter.configs").setup {
     -- 安装语言解析器
     ensure_installed = {
         "html", "css", "vim", "lua", "javascript", "typescript", "c", "go",
-        "rust", "cpp", "cmake", "dockerfile", "fish", "gomod", "java", "json",
+        "rust", "cmake", "dockerfile", "fish", "gomod", "java", "json",
         "json5", "jsonc", "julia", "kotlin", "markdown", "python", "regex",
         "vue", "yaml"
     },
