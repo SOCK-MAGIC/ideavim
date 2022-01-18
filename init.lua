@@ -42,8 +42,8 @@ require("packer").startup(function()
             "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer", "hrsh7th/cmp-path",
             "hrsh7th/cmp-cmdline", "hrsh7th/cmp-vsnip", "hrsh7th/vim-vsnip",
             "rafamadriz/friendly-snippets", "onsails/lspkind-nvim",
-            "hrsh7th/cmp-nvim-lua", "hrsh7th/cmp-calc",
-            "f3fora/cmp-spell", "hrsh7th/cmp-emoji"
+            "hrsh7th/cmp-nvim-lua", "hrsh7th/cmp-calc", "f3fora/cmp-spell",
+            "hrsh7th/cmp-emoji"
         }
     }
 end)
@@ -111,7 +111,7 @@ vim.o.writebackup = false
 vim.o.swapfile = false
 -- spell 设置
 vim.opt.spell = true
-vim.opt.spelllang = { "en_us" }
+vim.opt.spelllang = {"en_us"}
 -- 使用空格键作为 leader key
 local keymap = vim.api.nvim_set_keymap
 local opt = {noremap = true, silent = true}
@@ -236,8 +236,8 @@ cmp.setup {
     -- 来源
     sources = {
         {name = "nvim_lsp"}, {name = "vsnip"}, {name = "buffer"},
-        {name = "path"}, {name = "cmdline"}, {name = "calc"},
-        {name = "spell"}, {name = "emoji"}
+        {name = "path"}, {name = "cmdline"}, {name = "calc"}, {name = "spell"},
+        {name = "emoji"}
     },
     -- 样式
     formatting = {
@@ -275,4 +275,4 @@ cmp.setup {
 }
 
 -- 快速注释的设置
-vim.g.NERDSpaceDelims= 1 -- 加一个空格
+vim.g.NERDSpaceDelims = 1 -- 加一个空格
