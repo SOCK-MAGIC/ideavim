@@ -183,9 +183,8 @@ require("nvim-treesitter.configs").setup {
     -- 安装语言解析器
     ensure_installed = {
         "html", "css", "vim", "lua", "javascript", "typescript", "c", "go",
-        "rust", "cmake", "dockerfile", "fish", "gomod", "java", "json",
-        "json5", "jsonc", "julia", "kotlin", "markdown", "python", "regex",
-        "vue", "yaml"
+        "rust", "cmake", "dockerfile", "fish", "gomod", "java", "json", "json5",
+        "jsonc", "julia", "kotlin", "markdown", "python", "regex", "vue", "yaml"
     },
     -- 启用代码高亮
     highlight = {enable = true, additional_vim_regex_highlighting = false},
