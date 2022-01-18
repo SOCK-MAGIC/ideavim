@@ -145,6 +145,8 @@ keymap("n", "<A-t>", ":TagbarToggle<CR>", opt)
 -- 切换标签页
 keymap("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
 keymap("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
+-- 格式化
+keymap("n", "<leader>fm", ":Neoformat<CR>", opt)
 
 -- 状态栏的设置
 vim.g.lightline = {
