@@ -117,7 +117,8 @@ vim.g.maplocalleader = " "
 -- fw 保存
 keymap("n", "fw", ":w<CR>", opt)
 -- fc 退出
-keymap("n", "fc", ":q<CR>", opt)
+keymap("n", "fq", ":q<CR>", opt)
+keymap("n", "fc", ":bp|bd#<CR>", opt)
 -- 去掉上次搜索时的高亮
 keymap("n", "<leader>/", ":nohls<CR>", opt)
 -- 调用 lazygit
