@@ -122,6 +122,9 @@ keymap("n", "fc", ":bp|bd#<CR>", opt)
 -- HL 跳到行首行尾
 keymap("n", "L", "$", opt)
 keymap("n", "H", "^", opt)
+-- 复制到系统剪贴板，从系统剪贴板粘贴
+keymap("n", ";y", "\"+y", opt)
+keymap("n", ";p", "\"+p", opt)
 -- 去掉上次搜索时的高亮
 keymap("n", "<leader>/", ":nohls<CR>", opt)
 -- 调用 lazygit
