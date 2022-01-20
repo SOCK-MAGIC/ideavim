@@ -120,6 +120,9 @@ keymap("n", "fw", ":w<CR>", opt)
 keymap("n", "fq", ":q<CR>", opt)
 -- 关闭当前缓冲区
 keymap("n", "fc", ":bp|bd#<CR>", opt)
+-- HL 跳到行首行尾
+keymap("n", "L", "$", opt)
+keymap("n", "H", "^", opt)
 -- 去掉上次搜索时的高亮
 keymap("n", "<leader>/", ":nohls<CR>", opt)
 -- 调用 lazygit
