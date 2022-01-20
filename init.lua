@@ -116,9 +116,9 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 -- fw 保存
 keymap("n", "fw", ":w<CR>", opt)
--- fc 退出
+-- fq 退出
 keymap("n", "fq", ":q<CR>", opt)
--- 关闭当前缓冲区
+-- fc 关闭当前缓冲区
 keymap("n", "fc", ":bp|bd#<CR>", opt)
 -- HL 跳到行首行尾
 keymap("n", "L", "$", opt)
