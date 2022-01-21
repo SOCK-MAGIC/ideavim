@@ -14,7 +14,7 @@ require("packer").startup(function()
     use "jiangmiao/auto-pairs" -- 括号自动补全
     use "github/copilot.vim" -- github ai 结对编程助手
     use "mhinz/vim-startify" -- 启动页
-    -- use "fatih/vim-go" -- vim-go
+    use "fatih/vim-go" -- vim-go
     use "sbdchd/neoformat" -- 代码格式化
     use "kdheepak/lazygit.nvim" -- lazygit
     use "preservim/nerdcommenter" -- 快速注释
@@ -279,4 +279,4 @@ cmp.setup {
 }
 
 -- 快速注释的设置
-vim.g.NERDSpaceDelims = 1 -- 加一个空格
+vim.g.NERDSpaceDelims = 1 -- 注释后加一个空格
