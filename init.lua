@@ -20,7 +20,7 @@ require("packer").startup(function()
     use "preservim/nerdcommenter" -- 快速注释
     use "tpope/vim-fugitive" -- 在vim中使用git
     use "preservim/tagbar" -- 大纲式导航
-    use "tyrannicaltoucan/vim-quantum" -- 这个主题比较好
+    use "rakr/vim-one" -- 主题
     use "skywind3000/vim-terminal-help" -- 方便的使用内置终端
     use "itchyny/lightline.vim" -- 让状态栏更好看
     use {"akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons"} -- 标签页
@@ -55,7 +55,7 @@ end)
 
 -- 设置主题
 vim.o.termguicolors = true
-vim.cmd [[colorscheme quantum]]
+vim.cmd [[colorscheme one]]
 -- 使用 UTF-8 编码
 vim.g.encoding = "UTF-8"
 vim.o.fileencoding = "UTF-8"
@@ -157,7 +157,7 @@ keymap("n", "<leader>fm", ":Neoformat<CR>", opt)
 
 -- 状态栏的设置
 vim.g.lightline = {
-    colorscheme = "quantum",
+    colorscheme = "one",
     active = {
         left = {
             {"mode", "paste"}, {"gitbranch", "readonly", "filename", "modified"}
