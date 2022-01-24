@@ -135,11 +135,7 @@ keymap("n", "sh", ":sp<CR>", opt) -- 垂直分屏
 keymap("n", "sc", "<C-w>c", opt) -- 关闭
 keymap("n", "so", "<C-w>o", opt) -- 关闭其他
 -- 分屏比例控制
-keymap("n", "<C-[>", ":vertical resize +10<CR>", opt)
-keymap("n", "<C-]>", ":vertical resize -10<CR>", opt)
-keymap("n", "s=", "<C-w>=", opt)
-keymap("n", "sj", ":resize +5<CR>", opt)
-keymap("n", "sk", ":resize -5<CR>", opt)
+keymap("n", "s=", "<C-w>=", opt) -- 恢复
 -- 分屏窗口之间跳转
 keymap("n", "<A-h>", "<C-w>h", opt)
 keymap("n", "<A-j>", "<C-w>j", opt)
