@@ -56,9 +56,10 @@ end)
 -- 设置主题
 vim.o.termguicolors = true
 vim.cmd [[colorscheme one]]
--- 使用 UTF-8 编码
+-- 设置编码，可以正确处理非 utf8 编码
+vim.o.fileencodings = "utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1"
 vim.g.encoding = "UTF-8"
-vim.o.fileencoding = "UTF-8"
+vim.o.fencs = "utf8,gbk,gb2312,gb18030"
 -- 上下移动光标时上下方保留4行
 vim.o.scrolloff = 4
 vim.o.sidescrolloff = 4
