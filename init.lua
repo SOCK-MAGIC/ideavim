@@ -21,6 +21,7 @@ require("packer").startup(function()
     use "tpope/vim-fugitive" -- 在vim中使用git
     use "preservim/tagbar" -- 大纲式导航
     use "rakr/vim-one" -- 主题
+    use "Pocco81/AutoSave.nvim" -- 自动保存
     use "skywind3000/vim-terminal-help" -- 方便的使用内置终端
     use "itchyny/lightline.vim" -- 让状态栏更好看
     use {"akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons"} -- 标签页
@@ -278,3 +279,23 @@ cmp.setup {
 
 -- 快速注释的设置
 vim.g.NERDSpaceDelims = 1 -- 注释后加一个空格
+
+-- 自动保存的设置
+local autosave = require("autosave")
+autosave.setup(
+    {
+        enabled = true,
+        execution_message = "AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"),
+        events = {"InsertLeave", "TextChanged"},
+        conditions = {
+            exists = true,
+            filename_is_not = {},
+            filetype_is_not = {},
+            modifiable = true
+        },
+        write_all_buffers = false,
+        on_off_commands = true,
+        clean_command_line_interval = 0,
+        debounce_delay = 135
+    }
+)
