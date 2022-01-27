@@ -71,6 +71,10 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 -- 高亮所在行
 vim.wo.cursorline = true
+-- 设置代码折叠，zc折叠，zo展开
+vim.o.foldlevel = 20
+vim.o.foldmethod = "expr" 
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 -- 显示左侧图标指示列
 vim.o.updatetime = 250
 vim.wo.signcolumn = "yes"
