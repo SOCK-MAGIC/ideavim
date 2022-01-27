@@ -19,6 +19,7 @@ require("packer").startup(function()
     use "kdheepak/lazygit.nvim" -- lazygit
     use "preservim/nerdcommenter" -- 快速注释
     use "tpope/vim-fugitive" -- 在vim中使用git
+    use "voldikss/vim-translator" -- 翻译
     use "preservim/tagbar" -- 大纲式导航
     use "rakr/vim-one" -- 主题
     use "Pocco81/AutoSave.nvim" -- 自动保存
@@ -133,6 +134,9 @@ keymap("n", ";y", "\"+y", opt)
 keymap("n", ";p", "\"+p", opt)
 -- 去掉上次搜索时的高亮
 keymap("n", "<leader>/", ":nohls<CR>", opt)
+-- 翻译
+vim.g.translator_default_engines = {"haici", "bing"}
+keymap("n", "<leader>t", ":TranslateW<CR>", opt)
 -- 调用 lazygit
 keymap("n", "<leader>gg", ":LazyGit<CR>", opt)
 -- 分屏
