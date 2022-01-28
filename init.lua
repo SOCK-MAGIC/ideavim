@@ -15,6 +15,7 @@ require("packer").startup(function()
     use "github/copilot.vim" -- github ai 结对编程助手
     use "mhinz/vim-startify" -- 启动页
     use "fatih/vim-go" -- vim-go
+    use "buoto/gotests-vim" -- 自动生成go测试代码
     use "sbdchd/neoformat" -- 代码格式化
     use "kdheepak/lazygit.nvim" -- lazygit
     use "preservim/nerdcommenter" -- 快速注释
@@ -30,7 +31,6 @@ require("packer").startup(function()
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"} -- 语法高亮
     use {"akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons"} -- 标签页
     use {"kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons"} -- 文件管理器
-    use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"} -- 语法高亮
     use { -- telescope 模糊搜索
         "nvim-telescope/telescope.nvim",
         requires = {{"nvim-lua/plenary.nvim"}}
@@ -141,6 +141,8 @@ vim.g.translator_default_engines = {"haici", "bing"}
 keymap("n", "<leader>t", ":TranslateW<CR>", opt)
 -- 调用 lazygit
 keymap("n", "<leader>gg", ":LazyGit<CR>", opt)
+-- 调用 gotests 为选中代码生成测试
+keymap("n", "<leader>gt", ":GoTests<CR>", opt)
 -- 分屏
 keymap("n", "sv", ":vsp<CR>", opt) -- 水平分屏
 keymap("n", "sh", ":sp<CR>", opt) -- 垂直分屏
@@ -313,3 +315,4 @@ autosave.setup(
         debounce_delay = 135
     }
 )
+
