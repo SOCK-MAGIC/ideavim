@@ -142,7 +142,7 @@ keymap("n", "<leader>t", ":TranslateW<CR>", opt)
 -- 调用 lazygit
 keymap("n", "<leader>gg", ":LazyGit<CR>", opt)
 -- 调用 gotests 为选中代码生成测试
-keymap("n", "<leader>gt", ":GoTests<CR>", opt)
+keymap("n", "<leader>tt", ":GoTests<CR>", opt)
 -- 分屏
 keymap("n", "sv", ":vsp<CR>", opt) -- 水平分屏
 keymap("n", "sh", ":sp<CR>", opt) -- 垂直分屏
