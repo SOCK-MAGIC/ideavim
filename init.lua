@@ -15,9 +15,6 @@ require("packer").startup(function()
     use "github/copilot.vim" -- github ai 结对编程助手
     use "mhinz/vim-startify" -- 启动页
     use "fatih/vim-go" -- vim-go
-    use "simrat39/rust-tools.nvim"
-    use "nvim-lua/plenary.nvim"
-    use "mfussenegger/nvim-dap"
     use "buoto/gotests-vim" -- 自动生成go测试代码
     use "sbdchd/neoformat" -- 代码格式化
     use "kdheepak/lazygit.nvim" -- lazygit
@@ -227,11 +224,7 @@ require("nvim-treesitter.configs").setup {
 require("nvim-tree").setup {}
 
 -- navigator 的设置
-require("navigator").setup({
-    lsp = {
-        format_on_save = false,
-    }
-})
+require("navigator").setup({})
 
 -- bufferline 标题栏设置
 require("bufferline").setup {
@@ -318,6 +311,3 @@ autosave.setup(
         debounce_delay = 135
     }
 )
-
--- rust-tools 的设置
-require("rust-tools").setup({})
