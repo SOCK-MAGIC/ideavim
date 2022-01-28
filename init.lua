@@ -16,6 +16,7 @@ require("packer").startup(function()
     use "mhinz/vim-startify" -- 启动页
     use "fatih/vim-go" -- vim-go
     use "buoto/gotests-vim" -- 自动生成go测试代码
+    use "simrat39/rust-tools.nvim"
     use "sbdchd/neoformat" -- 代码格式化
     use "kdheepak/lazygit.nvim" -- lazygit
     use "preservim/nerdcommenter" -- 快速注释
@@ -311,3 +312,5 @@ autosave.setup(
         debounce_delay = 500
     }
 )
+
+require("rust-tools").setup({})
