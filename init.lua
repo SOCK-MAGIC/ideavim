@@ -25,8 +25,10 @@ require("packer").startup(function()
     use "Pocco81/AutoSave.nvim" -- 自动保存
     use "skywind3000/vim-terminal-help" -- 方便的使用内置终端
     use "itchyny/lightline.vim" -- 让状态栏更好看
+    use "neovim/nvim-lspconfig" -- lsp
+    use "nvim-treesitter/nvim-treesitter-refactor"
+    use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"} -- 语法高亮
     use {"akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons"} -- 标签页
-    use {"neovim/nvim-lspconfig", "williamboman/nvim-lsp-installer"} -- lsp
     use {"kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons"} -- 文件管理器
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"} -- 语法高亮
     use { -- telescope 模糊搜索
@@ -220,7 +222,11 @@ require("nvim-treesitter.configs").setup {
 require("nvim-tree").setup {}
 
 -- navigator 的设置
-require("navigator").setup()
+require("navigator").setup({
+    lsp = {
+        format_on_save = false,
+    }
+})
 
 -- bufferline 标题栏设置
 require("bufferline").setup {
