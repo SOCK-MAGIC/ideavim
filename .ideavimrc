@@ -53,26 +53,15 @@ let mapleader=" "
 nnoremap <silent> <Leader>/ :<C-u>nohlsearch<CR><C-l>
 
 " 移动相关
-" 前一个缓冲区
-nnoremap <silent> [b :w<CR>:bprevious<CR>
-" 后一个缓冲区
-nnoremap <silent> ]b :w<CR>:bnext<CR>
 " 定义快捷键到行首和行尾
 map H ^
 map L $
-" 定义快速跳转
-nmap <Leader>t <C-]>
-" 定义快速跳转回退
-nmap <Leader>T <C-t>
-" 标签页后退 ---标签页前进是gt
-nmap gn gt
-nmap gp gT
 
 " 文件操作相关
 " 定义快捷键关闭当前分割窗口
-nmap <Leader>q :q<CR>
+nnoremap fq :q<CR>
 " 定义快捷键保存当前窗口内容
-nmap <Leader>w :w<CR>
+nnoremap fw :w<CR>
 
 " 窗口操作相关
 map <C-j> <C-W>j
@@ -81,18 +70,20 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " 使用idea内部功能
-" copy operation
-nnoremap <Leader>c :action $Copy<CR>
-" paste operation
-nnoremap <Leader>v :action $Paste<CR>
-" cut operation
-nnoremap <Leader>x :action $Cut<CR>
-" Select All
-nnoremap <Leader>a :action $SelectAll<CR>
-" reformat code
-nnoremap <Leader>f :action ReformatCode<CR>
-" New File
+" 复制
+nnoremap ;y :action $Copy<CR>
+" 粘贴
+nnoremap ;p :action $Paste<CR>
+" 剪切
+nnoremap ;x :action $Cut<CR>
+" 全选
+nnoremap ;a :action $SelectAll<CR>
+" 格式化代码
+nnoremap <Leader>fm :action ReformatCode<CR>
+" 新建文件
 nnoremap <Leader>n :action NewFile<CR>
+" 在文件中查找
+nnoremap <Leader>fd :action FindInPath<CR>
 " 找到usage
 nnoremap <Leader>u :action FindUsages<CR>
 " 调用idea的replace操作
