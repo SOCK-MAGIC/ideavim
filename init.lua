@@ -140,7 +140,7 @@ keymap("n", "<leader>/", ":nohls<CR>", opt)
 vim.g.translator_default_engines = {"haici", "bing"}
 keymap("n", "<leader>t", ":TranslateW<CR>", opt)
 -- 调用 lazygit
-keymap("n", "<leader>gg", ":LazyGit<CR>", opt)
+keymap("n", "<leader>lg", ":LazyGit<CR>", opt)
 -- 调用 gotests 为选中代码生成测试
 keymap("n", "<leader>tt", ":GoTests<CR>", opt)
 -- 分屏
