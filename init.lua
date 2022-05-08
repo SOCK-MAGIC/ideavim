@@ -20,7 +20,6 @@ require("packer").startup(function()
     use "sbdchd/neoformat" -- 代码格式化
     use "kdheepak/lazygit.nvim" -- lazygit
     use "preservim/nerdcommenter" -- 快速注释
-    use "tpope/vim-fugitive" -- 在vim中使用git
     use "voldikss/vim-translator" -- 翻译
     use "preservim/tagbar" -- 大纲式导航
     use "rakr/vim-one" -- 主题
@@ -133,7 +132,7 @@ keymap("n", "fc", ":bp|bd#<CR>", opt)
 keymap("n", "L", "$", opt)
 keymap("n", "H", "^", opt)
 -- 复制到系统剪贴板，从系统剪贴板粘贴
-keymap("n", ";y", "\"+y", opt)
+keymap("n", ";y", "\"+yy", opt)
 keymap("n", ";p", "\"+p", opt)
 -- 去掉上次搜索时的高亮
 keymap("n", "<leader>/", ":nohls<CR>", opt)
