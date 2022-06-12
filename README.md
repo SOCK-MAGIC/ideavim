@@ -1,1 +1,1 @@
-我的neovim配置
+ideavim
